@@ -9,4 +9,3 @@ hitung = st.button ("Luas persegi panjang")
 if hitung :
     luas = panjang * lebar
     st.write ("Luas persegi panjang adalah = ", luas)
-    st.success (f"Luas persegi panjang = {luas}")
