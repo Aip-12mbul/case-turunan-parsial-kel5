@@ -1,0 +1,27 @@
+import streamlit as st
+import sympy as sp
+
+st.title("Aplikasi Turunan Parsial")
+
+# Input fungsi
+fungsi_input = st.text_input("Masukkan fungsi (contoh: x**2*y + sin(x*y))", "x**2*y + sin(x*y)")
+
+# Definisikan simbol
+x, y = sp.symbols('x y')
+
+try:
+    f = sp.sympify(fungsi_input)
+    
+    # Tampilkan fungsi
+    st.latex(f"f(x, y) = {sp.latex(f)}")
+
+    # Turunan parsial terhadap x dan y
+    df_dx = sp.diff(f, x)
+    df_dy = sp.diff(f, y)
+
+    st.subheader("Hasil Turunan Parsial")
+    st.latex(f"\\frac{{\\partial f}}{{\\partial x}} = {sp.latex(df_dx)}")
+    st.latex(f"\\frac{{\\partial f}}{{\\partial y}} = {sp.latex(df_dy)}")
+
+except:
+    st.error("Pastikan fungsi yang dimasukkan benar.")
